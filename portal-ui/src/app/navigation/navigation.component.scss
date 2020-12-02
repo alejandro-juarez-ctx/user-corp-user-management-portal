@@ -1,0 +1,22 @@
+.spacer-v {
+    height: 64px;
+    width: 100%;
+}
+
+.spacer-h {
+    flex: 1;
+}
+
+.sticky{
+    position: fixed;
+    overflow: hidden;
+}
+
+.toolbar {
+    width: 100%;
+    z-index: 10;
+}
+
+mat-icon.icon {
+    margin-right: 7px;
+}
