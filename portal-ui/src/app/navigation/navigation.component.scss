@@ -1,13 +1,9 @@
-.spacer-v {
+.spacer-vertical {
     height: 64px;
     width: 100%;
 }
 
-.spacer-h {
-    flex: 1;
-}
-
-.sticky{
+.sticky {
     position: fixed;
     overflow: hidden;
 }
