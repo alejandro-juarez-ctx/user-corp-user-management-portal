@@ -1,4 +1,40 @@
-mat-table {
-    height: 400px;
-    overflow-y: auto;
+.table-container {
+    .table {
+        height: 400px;
+    }
+
+    mat-table, .empty {
+        overflow-y: auto;
+        background-color: #f9f9f9;
+    }
+
+    .mat-cell, .mat-header-cell {
+        color: black;
+    }
+
+    .mat-header-row {
+        background-color: #dfdfdf;
+    }
+
+    .empty {
+        text-align: center;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+
+        .message {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: -webkit-fill-available;
+            flex-direction: column;
+
+            .material-icons {
+                font-size: 50px;
+            }
+            
+            p {
+                margin-top: 5px;
+                font-size: 28px;
+            }
+        }
+    }
 }

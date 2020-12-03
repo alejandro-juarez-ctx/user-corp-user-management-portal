@@ -42,6 +42,17 @@ export class UserListComponent implements OnInit {
     this.userList.splice(this.getUserIndex(id), 1);
     this.updateTableDataSource();
   }
+  
+  add(): void {
+    this.userList.push({
+      id: 6,
+      firstName: 'Bobby',
+      lastName: 'Poff',
+      email: 'bobby@poff.com'
+    });
+    
+    this.updateTableDataSource();
+  }
 
   private updateTableDataSource() {
     this.users = new MatTableDataSource(this.userList);
