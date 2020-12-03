@@ -14,6 +14,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
 import { ListTableComponent } from './list-table/list-table.component';
 import { AccountsService } from './_services/accounts.service';
 import { TitleComponent } from './title/title.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { TitleComponent } from './title/title.component';
     UserCreateComponent,
     UserUpdateComponent,
     ListTableComponent,
-    TitleComponent
+    TitleComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialsModule
+    MaterialsModule,
+    ReactiveFormsModule
   ],
   providers: [AccountsService],
   bootstrap: [AppComponent]

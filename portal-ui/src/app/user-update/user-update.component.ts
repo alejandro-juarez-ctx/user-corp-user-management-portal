@@ -13,4 +13,8 @@ export class UserUpdateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  updateUser() {
+    console.log('User has been updated.')
+  }
+
 }

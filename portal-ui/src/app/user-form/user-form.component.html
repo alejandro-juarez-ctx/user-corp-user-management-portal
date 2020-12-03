@@ -1,0 +1,20 @@
+<form class="form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="fields">
+        <div class="field" [ngClass]="displayError('firstName')">
+            <span>First Name</span>
+            <input formControlName="firstName" type="text">
+        </div>
+        <div class="field" [ngClass]="displayError('lastName')">
+            <span>Last Name</span>
+            <input formControlName="lastName" type="text">
+        </div>
+        <div class="field" [ngClass]="displayError('email')">
+            <span>Email</span>
+            <input formControlName="email" type="text">
+        </div>
+    </div>
+    <div class="controls">
+        <button mat-raised-button type="button" (click)="onSubmit()">Submit</button>
+        <button mat-raised-button type="button" routerLink="/">Cancel</button>
+    </div>
+</form>

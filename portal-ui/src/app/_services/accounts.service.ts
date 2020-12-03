@@ -26,6 +26,7 @@ export class AccountsService {
 
   addUser(userData: User): Observable<any> {
     console.log(`Creating user with firstName: ${userData.firstName}`);
+    userData.id = 5;
     this.users.push(userData);
     return of("Ok");
   }
