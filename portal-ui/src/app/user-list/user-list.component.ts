@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-user-list',
@@ -6,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  displayedColumns = ["firstName", "lastName", "email", "actions"];
+  columns = ["firstName", "lastName", "email", "actions"];
 
-  users = [
+  userList: User[] = [
     {
       id: 0,
       firstName: 'John',
@@ -23,9 +25,12 @@ export class UserListComponent implements OnInit {
     }
   ]
 
+  users: MatTableDataSource<User>;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.updateTableDataSource();
   }
 
   update(id: number): void {
@@ -34,12 +39,21 @@ export class UserListComponent implements OnInit {
   }
 
   delete(id: number): void {
-    const user = this.getUser(id);
-    console.log(`Delete: ` + user.firstName);
+    this.userList.splice(this.getUserIndex(id), 1);
+    this.updateTableDataSource();
   }
 
-  private getUser(id: number): any {
-    return Object.values(this.users).filter((x: any) => x.id === id)[0];
+  private updateTableDataSource() {
+    this.users = new MatTableDataSource(this.userList);
   }
 
+  private getUser(id: number): User {
+    return Object.values(this.userList).filter((x: any) => x.id === id)[0];
+  }
+
+  private getUserIndex(id: number): number {
+    return Object.entries(this.userList)
+      .filter((entry: any) => entry[1].id === id)
+      .map((entry: any) => parseInt(entry[0]))[0];
+  }
 }

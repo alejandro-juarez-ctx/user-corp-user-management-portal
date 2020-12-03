@@ -11,6 +11,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
+import { ListTableComponent } from './list-table/list-table.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { UserUpdateComponent } from './user-update/user-update.component';
     NavigationComponent,
     UserListComponent,
     UserCreateComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    ListTableComponent
   ],
   imports: [
     BrowserModule,
