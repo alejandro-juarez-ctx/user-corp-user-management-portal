@@ -1,8 +1,5 @@
 <div class="list-container">
-    <div class="title">
-        <p>User List</p>
-    </div>
-    <div class="divider"></div>
+    <app-title [title]="title"></app-title>
     <div class="user-list-container">
         <app-list-table
             [dataSource]="users"
@@ -11,7 +8,7 @@
             (updateClicked)="update($event)">
         </app-list-table>
         <div class="list-options">
-            <button mat-raised-button (click)="add()">Add user</button>
+            <button mat-raised-button routerLink="/add">Add user</button>
         </div>
     </div>
 </div>

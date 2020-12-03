@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { User } from '../_models/user';
+import { AccountsService } from '../_services/accounts.service';
 
 @Component({
   selector: 'app-user-list',
@@ -8,63 +10,44 @@ import { User } from '../_models/user';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  columns = ["firstName", "lastName", "email", "actions"];
-
-  userList: User[] = [
-    {
-      id: 0,
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@doe.com'
-    },
-    {
-      id: 1,
-      firstName: 'Jane',
-      lastName: 'Doeson',
-      email: 'jane@doeson.com'
-    }
-  ]
+  readonly columns = ["firstName", "lastName", "email", "actions"];
+  readonly title = "User List";
 
   users: MatTableDataSource<User>;
 
-  constructor() { }
+  constructor(
+    private accountsService: AccountsService,
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.updateTableDataSource();
   }
 
-  update(id: number): void {
-    const user = this.getUser(id);
-    console.log(`Update: ` + user.firstName);
+  private get userList(): User[] {
+    return this.accountsService.users;
   }
 
   delete(id: number): void {
-    this.userList.splice(this.getUserIndex(id), 1);
-    this.updateTableDataSource();
+    this.accountsService.deleteUser(id)
+      .subscribe(
+        () => {},
+        err => {},
+        () => this.updateTableDataSource()
+      );
   }
-  
-  add(): void {
-    this.userList.push({
-      id: 6,
-      firstName: 'Bobby',
-      lastName: 'Poff',
-      email: 'bobby@poff.com'
-    });
-    
-    this.updateTableDataSource();
+
+  update(id: number): void {
+    const properties = {
+      queryParams: {
+        id: id
+      }
+    };
+
+    this.router.navigate(['/update'], properties);
   }
 
   private updateTableDataSource() {
     this.users = new MatTableDataSource(this.userList);
-  }
-
-  private getUser(id: number): User {
-    return Object.values(this.userList).filter((x: any) => x.id === id)[0];
-  }
-
-  private getUserIndex(id: number): number {
-    return Object.entries(this.userList)
-      .filter((entry: any) => entry[1].id === id)
-      .map((entry: any) => parseInt(entry[0]))[0];
   }
 }

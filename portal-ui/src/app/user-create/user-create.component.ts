@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-create.component.scss']
 })
 export class UserCreateComponent implements OnInit {
+  readonly title = "Add User"
 
   constructor() { }
 

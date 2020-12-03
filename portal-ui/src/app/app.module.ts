@@ -12,6 +12,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserUpdateComponent } from './user-update/user-update.component';
 import { ListTableComponent } from './list-table/list-table.component';
+import { AccountsService } from './_services/accounts.service';
+import { TitleComponent } from './title/title.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ListTableComponent } from './list-table/list-table.component';
     UserListComponent,
     UserCreateComponent,
     UserUpdateComponent,
-    ListTableComponent
+    ListTableComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { ListTableComponent } from './list-table/list-table.component';
     BrowserAnimationsModule,
     MaterialsModule
   ],
-  providers: [],
+  providers: [AccountsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

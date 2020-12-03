@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-update.component.scss']
 })
 export class UserUpdateComponent implements OnInit {
+  readonly title = "Update User";
 
   constructor() { }
 
