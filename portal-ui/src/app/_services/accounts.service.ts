@@ -6,6 +6,7 @@ import { User } from '../_models/user';
 export class AccountsService {
 
   users: User[] = [];
+  private id = 0;
 
   constructor() {
     this.fetchUsers()
@@ -20,26 +21,31 @@ export class AccountsService {
     return of([]);
   }
 
+  private getId(): number {
+    return this.id++;
+  }
+
   get userList(): User[] {
     return this.users;
   }
 
   addUser(userData: User): Observable<any> {
-    console.log(`Creating user with firstName: ${userData.firstName}`);
-    userData.id = 5;
+    userData.id = this.getId();
     this.users.push(userData);
     return of("Ok");
   }
 
   deleteUser(id: number): Observable<any> {
-    console.log(`Deleting user with id: ${id}`);
     this.users.splice(this.getUserIndex(id), 1);
     return of("Ok");
   }
 
-  updateUser(id: number): Observable<any> {
-    console.log(`Updating user with id: ${id}`)
+  updateUser(user: User): Observable<any> {
     return of("");
+  }
+
+  getUserData(id: number): Observable<User> {
+    return of(this.users.filter(user => user.id == id)[0]);
   }
 
   private getUserIndex(id: number): number {

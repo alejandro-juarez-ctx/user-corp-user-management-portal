@@ -16,6 +16,7 @@ import { AccountsService } from './_services/accounts.service';
 import { TitleComponent } from './title/title.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserUpdateResolver } from './routes/user-update.resolver';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialsModule,
     ReactiveFormsModule
   ],
-  providers: [AccountsService],
+  providers: [
+    AccountsService,
+    UserUpdateResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
