@@ -8,3 +8,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 700px;
     font-size: 14px;
 }
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: auto;
+        margin: 30px 40px;
+    }
+}
