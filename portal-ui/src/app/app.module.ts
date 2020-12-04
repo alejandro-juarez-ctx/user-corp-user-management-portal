@@ -18,7 +18,6 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserUpdateResolver } from './routes/user-update.resolver';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -42,11 +41,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
   ],
   providers: [
     AccountsService,
-    UserUpdateResolver,
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    }
+    UserUpdateResolver
   ],
   bootstrap: [AppComponent]
 })
