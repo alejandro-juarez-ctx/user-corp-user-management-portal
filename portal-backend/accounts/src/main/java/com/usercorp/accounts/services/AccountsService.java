@@ -34,7 +34,7 @@ public class AccountsService {
     public boolean update(User updatedUser) {
         Optional<User> result = getUserById(updatedUser.getId());
 
-        if (result.isEmpty()) return false;
+        if (!result.isPresent()) return false;
 
         User user = result.get();
 
@@ -49,7 +49,7 @@ public class AccountsService {
     public boolean delete(int id) {
         Optional<User> result = getUserById(id);
 
-        if (result.isEmpty()) return false;
+        if (!result.isPresent()) return false;
 
         userRepository.delete(result.get());
         return true;

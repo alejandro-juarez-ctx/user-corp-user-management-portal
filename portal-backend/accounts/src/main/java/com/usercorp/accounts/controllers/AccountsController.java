@@ -27,7 +27,7 @@ public class AccountsController {
     public @ResponseBody ResponseEntity<User> getById(@PathVariable int id) {
         Optional<User> result = accountsService.getUserById(id);
 
-        if (result.isEmpty()) return ResponseEntity.notFound().build();
+        if (!result.isPresent()) return ResponseEntity.notFound().build();
 
         User user = result.get();
         return ResponseEntity.ok().body(user);
