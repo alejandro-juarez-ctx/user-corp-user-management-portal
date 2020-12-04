@@ -23,18 +23,22 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.updateUserList();
+  }
+
+  updateUserList(): void {
     this.accountsService.fetchUsers()
-      .subscribe(
-        users => this.userList = users,
-        err => {},
-        () => this.updateTableDataSource()
-      );
+    .subscribe(
+      users => this.userList = users,
+      err => {},
+      () => this.updateTableDataSource()
+    );
   }
 
   delete(id: number): void {
     this.accountsService.deleteUser(id)
       .subscribe(
-        () => {},
+        () => this.updateUserList(),
         err => {},
         () => this.updateTableDataSource()
       );
