@@ -13,6 +13,8 @@ export class UserListComponent implements OnInit {
   readonly columns = ["firstName", "lastName", "email", "actions"];
   readonly title = "User List";
 
+  private userList: User[] = []
+
   users: MatTableDataSource<User>;
 
   constructor(
@@ -21,11 +23,12 @@ export class UserListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateTableDataSource();
-  }
-
-  private get userList(): User[] {
-    return this.accountsService.users;
+    this.accountsService.fetchUsers()
+      .subscribe(
+        users => this.userList = users,
+        err => {},
+        () => this.updateTableDataSource()
+      );
   }
 
   delete(id: number): void {

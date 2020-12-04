@@ -17,6 +17,7 @@ import { TitleComponent } from './title/title.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserUpdateResolver } from './routes/user-update.resolver';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UserUpdateResolver } from './routes/user-update.resolver';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     AccountsService,

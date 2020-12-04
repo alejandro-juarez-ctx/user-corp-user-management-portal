@@ -1,56 +1,36 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models/user';
 
 @Injectable()
 export class AccountsService {
+  private readonly accountsApi = environment.resources.accounts_api;
 
-  users: User[] = [];
-  private id = 0;
+  constructor(
+    private http: HttpClient
+  ) {}
 
-  constructor() {
-    this.fetchUsers()
-      .subscribe(
-        users => {
-          this.users = users;
-        }
-      )
-  }
-
-  private fetchUsers(): Observable<User[]> {
-    return of([]);
-  }
-
-  private getId(): number {
-    return this.id++;
-  }
-
-  get userList(): User[] {
-    return this.users;
+  fetchUsers(): Observable<User[]> {
+    return this.http.get<any>(this.accountsApi);
   }
 
   addUser(userData: User): Observable<any> {
-    userData.id = this.getId();
-    this.users.push(userData);
-    return of("Ok");
+    return this.http.post<any>(this.accountsApi, userData);
   }
 
   deleteUser(id: number): Observable<any> {
-    this.users.splice(this.getUserIndex(id), 1);
-    return of("Ok");
+    const requestUrl = `${this.accountsApi}/${id}`;
+    return this.http.delete<any>(requestUrl);
   }
 
   updateUser(user: User): Observable<any> {
-    return of("");
+    return this.http.put<any>(this.accountsApi, user);
   }
 
   getUserData(id: number): Observable<User> {
-    return of(this.users.filter(user => user.id == id)[0]);
-  }
-
-  private getUserIndex(id: number): number {
-    return Object.entries(this.users)
-      .filter((entry: any) => entry[1].id === id)
-      .map((entry: any) => parseInt(entry[0]))[0];
+    const requestUrl = `${this.accountsApi}/${id}`;
+    return this.http.get<any>(requestUrl);
   }
 }

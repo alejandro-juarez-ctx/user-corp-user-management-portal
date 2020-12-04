@@ -15,11 +15,11 @@ export class ListTableComponent {
   @Output() updateClicked = new EventEmitter<number>();
 
   get data() {
-    return this.dataSource.data;
+    return this.dataSource?.data;
   }
 
   isDataAvailable(): boolean {
-    return this.data.length > 0;
+    return this.data?.length > 0;
   }
 
   onUpdateClicked(id: number) {
