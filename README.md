@@ -1,5 +1,14 @@
 # user-corp-user-management-portal
 
+## Portal UI
+Angular 11 based application. Integrated with Angular Materials for out-of-the-box look and feel UI/UX.
+
+### Deployment
+The application is hosted in an AWS S3 Bucket. To deploy please use the following command:
+```
+aws s3 cp .\dist\portal-ui\ s3://MY-BUCKET-NAME/ --recursive
+```
+
 ## Portal Backend
 The project is build as a Java 1.8 Spring Boot Application with Swagger UI integrated for easy documentation/testing.
 
