@@ -3,19 +3,25 @@
         <ng-container>
             <ng-container matColumnDef="firstName">
                 <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
-                <mat-cell *matCellDef="let record">{{record.firstName}}</mat-cell>
+                <mat-cell *matCellDef="let record">
+                    <span class="overflow">{{record.firstName}}</span>
+                </mat-cell>
             </ng-container>
             <ng-container matColumnDef="lastName">
                 <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
-                <mat-cell *matCellDef="let record">{{record.lastName}}</mat-cell>
+                <mat-cell *matCellDef="let record">
+                    <span class="overflow">{{record.lastName}}</span>
+                </mat-cell>
             </ng-container>
             <ng-container matColumnDef="email">
                 <mat-header-cell *matHeaderCellDef>Email Address</mat-header-cell>
-                <mat-cell *matCellDef="let record">{{record.email}}</mat-cell>
+                <mat-cell *matCellDef="let record">
+                    <span class="overflow">{{record.email}}</span>
+                </mat-cell>
             </ng-container>
             <ng-container matColumnDef="actions">
                 <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
-                <mat-cell *matCellDef="let record">
+                <mat-cell class="actions-container" *matCellDef="let record">
                     <button mat-button (click)="onUpdateClicked(record.id)">Update</button>
                     <button mat-button (click)="onDeleteClicked(record.id)">Delete</button>
                 </mat-cell>

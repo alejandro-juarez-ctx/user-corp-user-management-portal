@@ -16,6 +16,18 @@
         background-color: #dfdfdf;
     }
 
+    mat-cell {
+        &.actions-container {
+            display: flex;
+        }
+
+        span.overflow {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+
     .empty {
         text-align: center;
 
@@ -35,5 +47,11 @@
                 font-size: 28px;
             }
         }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .actions-container {
+        flex-direction: column;
     }
 }
